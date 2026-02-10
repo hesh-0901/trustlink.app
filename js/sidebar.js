@@ -1,9 +1,18 @@
-function openSidebar() {
-  document.getElementById("sidebar").classList.remove("sidebar-hidden");
-  document.getElementById("sidebarOverlay").classList.remove("hidden");
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("sidebarOverlay");
+  const closeBtn = document.getElementById("closeSidebarBtn");
 
-function closeSidebar() {
-  document.getElementById("sidebar").classList.add("sidebar-hidden");
-  document.getElementById("sidebarOverlay").classList.add("hidden");
-}
+  window.openSidebar = () => {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+  };
+
+  window.closeSidebar = () => {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  };
+
+  overlay.addEventListener("click", closeSidebar);
+  closeBtn.addEventListener("click", closeSidebar);
+});
