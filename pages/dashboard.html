@@ -8,12 +8,7 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Heroicons (modern icons) -->
-  <script type="module">
-    import { createElement } from "https://cdn.skypack.dev/@heroicons/react/24/outline";
-  </script>
-
-  <!-- Chart.js -->
+  <!-- Chart -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- Sidebar CSS -->
@@ -30,26 +25,30 @@
 
   <!-- Header -->
   <header class="flex items-center justify-between mb-6">
-    <button onclick="openSidebar()"
-      class="p-3 rounded-2xl bg-white shadow">
-      <!-- menu icon -->
+    <button onclick="openSidebar()" class="p-3 rounded-2xl bg-white shadow">
       <svg class="w-6 h-6 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
         viewBox="0 0 24 24">
         <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
     </button>
 
-    <h1 class="font-semibold text-lg">Dashboard</h1>
+    <h1 class="text-lg font-semibold">Dashboard</h1>
 
-    <button
-      class="p-3 rounded-2xl bg-[#6d2cf3] text-white shadow-lg">
-      <!-- bell -->
+    <!-- Notifications with badge -->
+    <button class="relative p-3 rounded-2xl bg-[#6d2cf3] text-white shadow-lg">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8"
         viewBox="0 0 24 24">
         <path stroke-linecap="round"
           d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5"/>
         <path stroke-linecap="round" d="M9 17a3 3 0 006 0"/>
       </svg>
+      <span
+        class="absolute -top-1 -right-1
+               w-5 h-5 rounded-full
+               bg-yellow-400 text-[#4b1bb3]
+               text-xs font-bold flex items-center justify-center">
+        3
+      </span>
     </button>
   </header>
 
@@ -58,90 +57,137 @@
     class="bg-gradient-to-br from-[#6d2cf3] to-[#4b1bb3]
            rounded-3xl p-6 text-white shadow-xl mb-6">
 
-    <p class="text-sm opacity-80">Solde total</p>
-    <h2 class="text-4xl font-bold mt-2">$ 2,450.00</h2>
+    <div class="flex items-center justify-between">
+      <p class="text-sm opacity-80">Solde total</p>
+      <span
+        class="px-3 py-1 rounded-full
+               bg-white/20 text-xs font-medium">
+        Actif
+      </span>
+    </div>
+
+    <h2 class="text-4xl font-bold mt-3">$ 2,450.00</h2>
     <p class="text-sm opacity-80 mt-1">≈ 6 615 000 CDF</p>
 
-    <div class="mt-4 flex gap-3">
-      <span class="px-4 py-1 rounded-full bg-white/20 text-sm">USD</span>
-      <span class="px-4 py-1 rounded-full bg-white/20 text-sm">CDF</span>
+    <!-- Quick stats -->
+    <div class="mt-5 flex gap-3">
+      <div class="flex-1 bg-white/15 rounded-2xl p-3 text-center">
+        <p class="text-xs opacity-80">Entrées</p>
+        <p class="font-semibold mt-1">+ $820</p>
+      </div>
+      <div class="flex-1 bg-white/15 rounded-2xl p-3 text-center">
+        <p class="text-xs opacity-80">Sorties</p>
+        <p class="font-semibold mt-1">- $410</p>
+      </div>
     </div>
   </section>
 
-  <!-- Chart Card -->
+  <!-- Chart -->
   <section class="bg-white rounded-3xl p-5 shadow mb-6">
     <div class="flex items-center justify-between mb-4">
       <h3 class="font-semibold">Évolution du solde</h3>
-      <svg class="w-5 h-5 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
-        viewBox="0 0 24 24">
-        <path stroke-linecap="round" d="M3 17l6-6 4 4 7-7"/>
-      </svg>
+      <span class="text-xs text-green-600 font-medium">
+        +12%
+      </span>
     </div>
     <canvas id="balanceChart" height="120"></canvas>
   </section>
 
-  <!-- Transactions Card -->
+  <!-- Transactions -->
   <section class="bg-white rounded-3xl p-5 shadow">
     <div class="flex items-center justify-between mb-4">
       <h3 class="font-semibold">Transactions récentes</h3>
-      <svg class="w-5 h-5 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
-        viewBox="0 0 24 24">
-        <path stroke-linecap="round" d="M4 4v5h.6M20 20v-5h-.6"/>
-      </svg>
+      <span class="text-xs text-slate-400">
+        Aujourd’hui
+      </span>
     </div>
 
-    <!-- Scrollable list -->
+    <!-- Scrollable -->
     <div class="space-y-4 max-h-72 overflow-y-auto pr-1">
 
-      <!-- Entrée -->
+      <!-- Item -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="p-3 rounded-2xl bg-green-100 text-green-600">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" d="M12 19V5m0 0l-4 4m4-4l4 4"/>
-            </svg>
+          <!-- Avatar -->
+          <div
+            class="w-11 h-11 rounded-full
+                   bg-gradient-to-br from-green-400 to-emerald-500
+                   text-white font-bold
+                   flex items-center justify-center">
+            JK
           </div>
+
           <div>
             <p class="font-medium">Junior Kalala</p>
-            <p class="text-xs text-slate-400">Entrée</p>
+            <p class="text-xs text-slate-400">Entrée • USD</p>
           </div>
         </div>
-        <span class="font-semibold text-green-600">+ $120</span>
+
+        <div class="text-right">
+          <p class="font-semibold text-green-600">+ $120</p>
+          <span
+            class="inline-block mt-1
+                   px-2 py-0.5 rounded-full
+                   bg-green-100 text-green-600 text-xs">
+            Reçu
+          </span>
+        </div>
       </div>
 
-      <!-- Sortie -->
+      <!-- Item -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="p-3 rounded-2xl bg-red-100 text-red-600">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" d="M12 5v14m0 0l-4-4m4 4l4-4"/>
-            </svg>
+          <div
+            class="w-11 h-11 rounded-full
+                   bg-gradient-to-br from-red-400 to-rose-500
+                   text-white font-bold
+                   flex items-center justify-center">
+            GM
           </div>
+
           <div>
             <p class="font-medium">Grâce Mukendi</p>
-            <p class="text-xs text-slate-400">Sortie</p>
+            <p class="text-xs text-slate-400">Sortie • CDF</p>
           </div>
         </div>
-        <span class="font-semibold text-red-600">- 150 000 CDF</span>
+
+        <div class="text-right">
+          <p class="font-semibold text-red-600">- 150 000</p>
+          <span
+            class="inline-block mt-1
+                   px-2 py-0.5 rounded-full
+                   bg-red-100 text-red-600 text-xs">
+            Envoyé
+          </span>
+        </div>
       </div>
 
-      <!-- Entrée -->
+      <!-- Item -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="p-3 rounded-2xl bg-green-100 text-green-600">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" d="M12 19V5m0 0l-4 4m4-4l4 4"/>
-            </svg>
+          <div
+            class="w-11 h-11 rounded-full
+                   bg-gradient-to-br from-indigo-400 to-violet-500
+                   text-white font-bold
+                   flex items-center justify-center">
+            MT
           </div>
+
           <div>
             <p class="font-medium">Moïse Tshibanda</p>
-            <p class="text-xs text-slate-400">Entrée</p>
+            <p class="text-xs text-slate-400">Entrée • USD</p>
           </div>
         </div>
-        <span class="font-semibold text-green-600">+ $75</span>
+
+        <div class="text-right">
+          <p class="font-semibold text-green-600">+ $75</p>
+          <span
+            class="inline-block mt-1
+                   px-2 py-0.5 rounded-full
+                   bg-green-100 text-green-600 text-xs">
+            Reçu
+          </span>
+        </div>
       </div>
 
     </div>
@@ -160,7 +206,7 @@
 
 <script src="../js/sidebar.js"></script>
 
-<!-- Charts -->
+<!-- Chart -->
 <script>
   new Chart(document.getElementById("balanceChart"), {
     type: "line",
