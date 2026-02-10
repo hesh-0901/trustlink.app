@@ -1,31 +1,36 @@
+// Sidebar elements
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("sidebarOverlay");
+const closeBtn = document.getElementById("closeSidebarBtn");
+
 // Ouvrir la sidebar
 window.openSidebar = function () {
-  const sidebar = document.getElementById("sidebar");
-  const overlay = document.getElementById("sidebarOverlay");
-
   if (!sidebar || !overlay) return;
 
   sidebar.style.transform = "translateX(0)";
   overlay.classList.remove("hidden");
+  document.body.style.overflow = "hidden"; // bloque le scroll
 };
 
 // Fermer la sidebar
 window.closeSidebar = function () {
-  const sidebar = document.getElementById("sidebar");
-  const overlay = document.getElementById("sidebarOverlay");
-
   if (!sidebar || !overlay) return;
 
   sidebar.style.transform = "translateX(-100%)";
   overlay.classList.add("hidden");
+  document.body.style.overflow = ""; // réactive le scroll
 };
 
-// Gestion clic overlay et bouton fermer
-document.addEventListener("click", function (e) {
-  if (
-    e.target.id === "sidebarOverlay" ||
-    e.target.id === "closeSidebarBtn"
-  ) {
+// Clic overlay = fermer
+if (overlay) {
+  overlay.addEventListener("click", () => {
     closeSidebar();
-  }
-});
+  });
+}
+
+// Clic bouton fermer
+if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    closeSidebar();
+  });
+}
