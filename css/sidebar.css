@@ -1,31 +1,32 @@
 .sidebar {
   transition: transform 0.3s ease-in-out;
-}
-
-.sidebar-hidden {
-  transform: translateX(-100%);
+  z-index: 50;
 }
 
 .sidebar-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0,0,0,0.45);
   z-index: 40;
 }
 
 .menu-item {
-  display: block;
-  padding: 12px 14px;
-  border-radius: 14px;
+  display: flex;
+  padding: 12px 16px;
+  border-radius: 16px;
   font-weight: 500;
 }
 
-.menu-item:hover {
-  background-color: #eef2ff;
-  color: #4f46e5;
+.menu-item:hover,
+.menu-item.active {
+  background: rgba(255,255,255,0.15);
 }
 
-.menu-item.active {
-  background-color: #eef2ff;
-  color: #4f46e5;
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 16px;
+  background: linear-gradient(to right, #facc15, #fde047);
+  color: #4b1bb3;
+  font-weight: 600;
 }
