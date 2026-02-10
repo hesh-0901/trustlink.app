@@ -4,91 +4,135 @@
   <meta charset="UTF-8" />
   <title>Trustlink – Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="../css/sidebar.css">
   <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 
 <body class="bg-slate-50">
 
-<!-- Overlay -->
-<div id="overlay" onclick="closeSidebar()" class="hidden fixed inset-0 overlay z-20"></div>
+  <!-- Sidebar container -->
+  <div id="sidebar-container"></div>
 
-<!-- Sidebar -->
-<aside id="sidebar"
-  class="sidebar sidebar-hidden fixed top-0 left-0 z-30 w-64 h-full bg-white border-r border-slate-200 p-5">
+  <!-- Main -->
+  <main class="p-5 pb-24">
 
-  <h2 class="text-xl font-bold text-indigo-600 mb-8">Trustlink</h2>
+    <!-- Header -->
+    <header class="flex items-center justify-between mb-6">
+      <button onclick="openSidebar()" class="text-2xl text-slate-700">☰</button>
 
-  <nav class="space-y-4 text-slate-700">
-    <a href="#" class="font-medium text-indigo-600">Dashboard</a>
-    <a href="#">Transactions</a>
-    <a href="#">Dettes</a>
-    <a href="#">Profil</a>
-    <a href="#">Sécurité</a>
-    <a href="#">Paramètres</a>
-    <a href="#">Aide & Support</a>
-  </nav>
+      <h1 class="font-semibold text-slate-800 text-lg">
+        Dashboard
+      </h1>
 
-  <div class="absolute bottom-6 left-5">
-    <button class="text-red-500 font-medium">Déconnexion</button>
-  </div>
-</aside>
+      <button
+        class="bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm font-medium shadow">
+        🔔
+      </button>
+    </header>
 
-<!-- Main -->
-<main class="p-5">
+    <!-- Wallet Card -->
+    <section
+      class="bg-gradient-to-r from-indigo-500 to-violet-500
+             text-white rounded-3xl p-6 mb-8 shadow">
 
-  <!-- Header -->
-  <header class="flex items-center justify-between mb-6">
-    <button onclick="openSidebar()" class="text-2xl">☰</button>
-    <h1 class="font-semibold text-slate-800">Dashboard</h1>
-    <button class="bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm">
-      🔔 Notifications
-    </button>
-  </header>
+      <p class="text-sm opacity-90">Solde total</p>
+      <h2 class="text-3xl font-bold mt-2">$ 2,450.00</h2>
+      <p class="text-sm mt-1 opacity-90">≈ 6 615 000 CDF</p>
 
-  <!-- Wallet -->
-  <section class="bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-3xl p-6 mb-6">
-    <p class="text-sm opacity-90">Solde total</p>
-    <h2 class="text-3xl font-bold mt-2">$ 2,450.00</h2>
-    <p class="text-sm mt-1">≈ 6 615 000 CDF</p>
-  </section>
+      <div class="mt-4 flex gap-3">
+        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">
+          USD
+        </span>
+        <span class="bg-white/20 px-3 py-1 rounded-full text-sm">
+          CDF
+        </span>
+      </div>
+    </section>
 
-  <!-- Transactions -->
-  <section>
-    <h3 class="font-semibold text-slate-700 mb-4">Transactions récentes</h3>
+    <!-- Charts -->
+    <section class="space-y-8 mb-10">
 
-    <div class="space-y-4">
-      <div class="bg-white p-4 rounded-2xl flex justify-between shadow-sm">
-        <div>
-          <p class="font-medium">Junior Kalala</p>
-          <p class="text-sm text-slate-400">Reçu</p>
-        </div>
-        <span class="text-green-500 font-semibold">+ $120</span>
+      <!-- Balance evolution -->
+      <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-200">
+        <h3 class="font-semibold text-slate-700 mb-4">
+          Évolution du portefeuille
+        </h3>
+        <canvas id="balanceChart" height="140"></canvas>
       </div>
 
-      <div class="bg-white p-4 rounded-2xl flex justify-between shadow-sm">
-        <div>
-          <p class="font-medium">Grâce Mukendi</p>
-          <p class="text-sm text-slate-400">Envoyé</p>
-        </div>
-        <span class="text-red-500 font-semibold">- 150 000 CDF</span>
+      <!-- Transactions stats -->
+      <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-200">
+        <h3 class="font-semibold text-slate-700 mb-4">
+          Répartition des transactions
+        </h3>
+        <canvas id="transactionChart" height="140"></canvas>
       </div>
 
-      <div class="bg-white p-4 rounded-2xl flex justify-between shadow-sm">
-        <div>
-          <p class="font-medium">Moïse Tshibanda</p>
-          <p class="text-sm text-slate-400">Reçu</p>
+    </section>
+
+    <!-- Recent transactions -->
+    <section>
+      <h3 class="font-semibold text-slate-700 mb-4">
+        Transactions récentes
+      </h3>
+
+      <div class="space-y-4">
+
+        <div class="bg-white p-4 rounded-2xl flex justify-between items-center shadow-sm">
+          <div>
+            <p class="font-medium">Junior Kalala</p>
+            <p class="text-sm text-slate-400">Reçu</p>
+          </div>
+          <span class="text-green-500 font-semibold">
+            + $120
+          </span>
         </div>
-        <span class="text-green-500 font-semibold">+ $75</span>
+
+        <div class="bg-white p-4 rounded-2xl flex justify-between items-center shadow-sm">
+          <div>
+            <p class="font-medium">Grâce Mukendi</p>
+            <p class="text-sm text-slate-400">Envoyé</p>
+          </div>
+          <span class="text-red-500 font-semibold">
+            - 150 000 CDF
+          </span>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl flex justify-between items-center shadow-sm">
+          <div>
+            <p class="font-medium">Moïse Tshibanda</p>
+            <p class="text-sm text-slate-400">Reçu</p>
+          </div>
+          <span class="text-green-500 font-semibold">
+            + $75
+          </span>
+        </div>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+  </main>
 
-<script src="../js/sidebar.js"></script>
-<script src="../js/dashboard.js"></script>
+  <!-- Load sidebar -->
+  <script>
+    fetch("../partials/sidebar.html")
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById("sidebar-container").innerHTML = html;
+      });
+  </script>
+
+  <!-- JS -->
+  <script src="../js/sidebar.js"></script>
+  <script src="../js/dashboard.js"></script>
+
 </body>
 </html>
