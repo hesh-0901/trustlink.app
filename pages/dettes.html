@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trustlink – Dettes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Sidebar CSS -->
+  <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+
+<body class="bg-[#f5f3ff] text-slate-800">
+
+<!-- Sidebar -->
+<div id="sidebar-container"></div>
+
+<!-- Main -->
+<main class="max-w-md mx-auto px-4 pt-4 pb-32">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between mb-6">
+    <button onclick="openSidebar()"
+      class="p-3 rounded-xl bg-white shadow-sm active:scale-95 transition">
+      <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" stroke-width="1.8"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <h1 class="text-lg font-semibold tracking-tight">
+      Dettes
+    </h1>
+
+    <span class="text-xs text-slate-400">
+      Gestion
+    </span>
+  </header>
+
+  <!-- Résumé -->
+  <section class="grid grid-cols-2 gap-4 mb-6">
+
+    <!-- On me doit -->
+    <div class="bg-white rounded-3xl p-5 shadow-sm">
+      <p class="text-xs text-slate-400">On me doit</p>
+      <p class="text-2xl font-bold text-green-600 mt-1">$ 620</p>
+      <p class="text-xs text-slate-400 mt-1">≈ 1 674 000 CDF</p>
+    </div>
+
+    <!-- Je dois -->
+    <div class="bg-white rounded-3xl p-5 shadow-sm">
+      <p class="text-xs text-slate-400">Je dois</p>
+      <p class="text-2xl font-bold text-red-600 mt-1">$ 280</p>
+      <p class="text-xs text-slate-400 mt-1">≈ 756 000 CDF</p>
+    </div>
+
+  </section>
+
+  <!-- On me doit -->
+  <section class="bg-white rounded-3xl p-5 shadow-sm mb-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-semibold">On me doit</h3>
+      <span class="text-xs text-green-600">À recevoir</span>
+    </div>
+
+    <div class="space-y-3 max-h-64 overflow-y-auto pr-1">
+
+      <div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 19V5" />
+              <path stroke-linecap="round" d="M5 12l7-7 7 7" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-sm">Junior Kalala</p>
+            <p class="text-xs text-slate-400">USD</p>
+          </div>
+        </div>
+
+        <div class="text-right">
+          <p class="font-semibold text-green-600 text-sm">$ 200</p>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-600">
+            En attente
+          </span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 19V5" />
+              <path stroke-linecap="round" d="M5 12l7-7 7 7" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-sm">Moïse Tshibanda</p>
+            <p class="text-xs text-slate-400">CDF</p>
+          </div>
+        </div>
+
+        <div class="text-right">
+          <p class="font-semibold text-green-600 text-sm">420 000</p>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-600">
+            En attente
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Je dois -->
+  <section class="bg-white rounded-3xl p-5 shadow-sm">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-semibold">Je dois</h3>
+      <span class="text-xs text-red-600">À payer</span>
+    </div>
+
+    <div class="space-y-3 max-h-64 overflow-y-auto pr-1">
+
+      <div class="flex items-center justify-between p-3 rounded-xl bg-red-50">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 5v14" />
+              <path stroke-linecap="round" d="M19 12l-7 7-7-7" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-sm">Grâce Mukendi</p>
+            <p class="text-xs text-slate-400">USD</p>
+          </div>
+        </div>
+
+        <div class="text-right">
+          <p class="font-semibold text-red-600 text-sm">$ 180</p>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600">
+            Prioritaire
+          </span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 5v14" />
+              <path stroke-linecap="round" d="M19 12l-7 7-7-7" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-sm">Patrick Mwamba</p>
+            <p class="text-xs text-slate-400">CDF</p>
+          </div>
+        </div>
+
+        <div class="text-right">
+          <p class="font-semibold text-red-600 text-sm">250 000</p>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600">
+            À payer
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Sidebar -->
+<script>
+  fetch("../partials/sidebar.html")
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById("sidebar-container").innerHTML = html;
+    });
+</script>
+
+<script src="../js/sidebar.js"></script>
+
+</body>
+</html>
