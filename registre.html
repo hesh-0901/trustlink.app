@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trustlink – Register</title>
+
+  <!-- Mobile-first / no zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 min-h-screen flex items-center justify-center">
+
+  <main class="w-full max-w-md px-5">
+
+    <!-- Header -->
+    <header class="text-center mb-10">
+      <h1 class="text-3xl font-bold text-slate-800">Créer un compte</h1>
+      <p class="text-slate-500 mt-2 text-base">
+        Rejoignez Trustlink en toute simplicité
+      </p>
+    </header>
+
+    <!-- Card -->
+    <section class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+
+      <!-- Input group -->
+      <div class="space-y-6">
+
+        <!-- Nom complet -->
+        <div class="relative">
+          <input
+            id="name"
+            type="text"
+            class="peer w-full text-base px-4 pt-6 pb-2 rounded-2xl border border-slate-300 
+                   focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            placeholder=" "
+          />
+          <label
+            class="absolute left-4 top-4 text-slate-400 text-sm transition-all
+                   peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                   peer-focus:top-2 peer-focus:text-sm"
+          >
+            Nom complet
+          </label>
+        </div>
+
+        <!-- Email -->
+        <div class="relative">
+          <input
+            id="email"
+            type="email"
+            inputmode="email"
+            class="peer w-full text-base px-4 pt-6 pb-2 rounded-2xl border border-slate-300 
+                   focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            placeholder=" "
+          />
+          <label
+            class="absolute left-4 top-4 text-slate-400 text-sm transition-all
+                   peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                   peer-focus:top-2 peer-focus:text-sm"
+          >
+            Adresse email
+          </label>
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+          <input
+            id="password"
+            type="password"
+            class="peer w-full text-base px-4 pt-6 pb-2 rounded-2xl border border-slate-300 
+                   focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            placeholder=" "
+          />
+          <label
+            class="absolute left-4 top-4 text-slate-400 text-sm transition-all
+                   peer-placeholder-shown:top-4 peer-placeholder-shown:text-base
+                   peer-focus:top-2 peer-focus:text-sm"
+          >
+            Mot de passe
+          </label>
+        </div>
+
+      </div>
+
+      <!-- Button -->
+      <button
+        id="registerBtn"
+        disabled
+        class="w-full mt-8 py-4 rounded-2xl text-base font-semibold
+               bg-slate-200 text-slate-400 transition"
+      >
+        Créer mon compte
+      </button>
+
+      <!-- Footer -->
+      <p class="text-center text-sm text-slate-500 mt-6">
+        Déjà un compte ?
+        <span class="text-indigo-500 font-medium cursor-pointer">
+          Se connecter
+        </span>
+      </p>
+
+    </section>
+  </main>
+
+  <!-- JS -->
+  <script>
+    const inputs = document.querySelectorAll("input");
+    const button = document.getElementById("registerBtn");
+
+    function checkForm() {
+      let filled = true;
+      inputs.forEach(input => {
+        if (!input.value.trim()) filled = false;
+      });
+
+      if (filled) {
+        button.disabled = false;
+        button.className =
+          "w-full mt-8 py-4 rounded-2xl text-base font-semibold bg-indigo-500 text-white hover:bg-indigo-600 transition";
+      } else {
+        button.disabled = true;
+        button.className =
+          "w-full mt-8 py-4 rounded-2xl text-base font-semibold bg-slate-200 text-slate-400 transition";
+      }
+    }
+
+    inputs.forEach(input => input.addEventListener("input", checkForm));
+  </script>
+
+</body>
+</html>
