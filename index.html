@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Trustlink – Login</title>
 
-  <!-- Empêche le zoom automatique sur mobile -->
+  <!-- Mobile-first : empêche le zoom automatique -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -67,9 +67,9 @@
       <!-- Footer -->
       <p class="text-center text-sm text-slate-500 mt-6">
         Nouveau sur Trustlink ?
-        <span class="text-indigo-500 font-medium cursor-pointer">
+        <a href="register.html" class="text-indigo-500 font-medium">
           Créer un compte
-        </span>
+        </a>
       </p>
 
     </section>
@@ -97,6 +97,11 @@
 
     email.addEventListener("input", toggleButton);
     password.addEventListener("input", toggleButton);
+
+    // Redirection vers le dashboard
+    button.addEventListener("click", () => {
+      window.location.href = "pages/dashboard.html";
+    });
   </script>
 
 </body>
