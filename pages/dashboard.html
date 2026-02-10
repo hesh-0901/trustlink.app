@@ -14,38 +14,53 @@
   <!-- Charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- CSS -->
+  <!-- Sidebar CSS -->
   <link rel="stylesheet" href="../css/sidebar.css">
-  <link rel="stylesheet" href="../css/dashboard.css">
+
+  <style>
+    /* Palette Pi Network (violet / or) */
+    :root {
+      --pi-purple: #6d2cf3;
+      --pi-purple-dark: #4b1bb3;
+      --pi-gold: #f5c46b;
+    }
+  </style>
 </head>
 
-<body class="bg-slate-100 text-slate-800">
+<body class="bg-[#f5f3ff] text-slate-800">
 
 <!-- Sidebar -->
 <div id="sidebar-container"></div>
 
 <!-- Main -->
-<main class="p-4 pb-28 max-w-md mx-auto">
+<main class="max-w-md mx-auto px-4 pb-28 pt-4">
 
   <!-- Header -->
   <header class="flex items-center justify-between mb-6">
-    <button onclick="openSidebar()" class="p-2 rounded-xl bg-white shadow">
+    <button onclick="openSidebar()" class="p-3 rounded-2xl bg-white shadow">
       <i data-feather="menu"></i>
     </button>
 
     <h1 class="text-lg font-semibold">Dashboard</h1>
 
-    <button class="p-3 rounded-2xl bg-indigo-500 text-white shadow-lg">
+    <button
+      class="p-3 rounded-2xl bg-[var(--pi-purple)] text-white shadow-lg">
       <i data-feather="bell"></i>
     </button>
   </header>
 
-  <!-- Wallet card -->
-  <section class="bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 
-                  text-white rounded-3xl p-6 shadow-xl mb-6">
+  <!-- Wallet Card -->
+  <section
+    class="rounded-3xl p-6 mb-6 shadow-xl text-white
+           bg-gradient-to-br from-[var(--pi-purple)]
+           to-[var(--pi-purple-dark)]">
 
-    <p class="text-sm opacity-90">Solde total</p>
-    <h2 class="text-4xl font-bold mt-2">$ 2,450.00</h2>
+    <div class="flex items-center justify-between">
+      <p class="text-sm opacity-90">Solde total</p>
+      <i data-feather="credit-card" class="opacity-80"></i>
+    </div>
+
+    <h2 class="text-4xl font-bold mt-3">$ 2,450.00</h2>
     <p class="text-sm mt-1 opacity-90">≈ 6 615 000 CDF</p>
 
     <div class="mt-5 flex gap-3">
@@ -54,40 +69,29 @@
     </div>
   </section>
 
-  <!-- Charts -->
-  <section class="space-y-6 mb-6">
-
-    <!-- Line chart -->
-    <div class="bg-white rounded-3xl p-5 shadow">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="font-semibold">Évolution du solde</h3>
-        <i data-feather="trending-up" class="text-indigo-500"></i>
-      </div>
-      <canvas id="balanceChart" height="120"></canvas>
+  <!-- Chart -->
+  <section class="bg-white rounded-3xl p-5 shadow mb-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-semibold">Évolution du portefeuille</h3>
+      <i data-feather="trending-up" class="text-[var(--pi-purple)]"></i>
     </div>
-
-    <!-- Doughnut -->
-    <div class="bg-white rounded-3xl p-5 shadow">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="font-semibold">Flux financiers</h3>
-        <i data-feather="pie-chart" class="text-indigo-500"></i>
-      </div>
-      <canvas id="flowChart" height="120"></canvas>
-    </div>
-
+    <canvas id="balanceChart" height="130"></canvas>
   </section>
 
-  <!-- Recent transactions -->
+  <!-- Recent Transactions -->
   <section class="bg-white rounded-3xl p-5 shadow">
-    <h3 class="font-semibold mb-4">Transactions récentes</h3>
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-semibold">Transactions récentes</h3>
+      <i data-feather="activity" class="text-[var(--pi-purple)]"></i>
+    </div>
 
-    <!-- Scrollable list -->
+    <!-- Scrollable Card -->
     <div class="space-y-4 max-h-64 overflow-y-auto pr-1">
 
-      <!-- Entry -->
+      <!-- Entrée -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="p-2 rounded-xl bg-green-100 text-green-600">
+          <div class="p-3 rounded-2xl bg-green-100 text-green-600">
             <i data-feather="arrow-down-left"></i>
           </div>
           <div>
@@ -98,10 +102,10 @@
         <span class="font-semibold text-green-600">+ $120</span>
       </div>
 
-      <!-- Exit -->
+      <!-- Sortie -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="p-2 rounded-xl bg-red-100 text-red-600">
+          <div class="p-3 rounded-2xl bg-red-100 text-red-600">
             <i data-feather="arrow-up-right"></i>
           </div>
           <div>
@@ -112,10 +116,10 @@
         <span class="font-semibold text-red-600">- 150 000 CDF</span>
       </div>
 
-      <!-- Entry -->
+      <!-- Entrée -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="p-2 rounded-xl bg-green-100 text-green-600">
+          <div class="p-3 rounded-2xl bg-green-100 text-green-600">
             <i data-feather="arrow-down-left"></i>
           </div>
           <div>
@@ -126,10 +130,10 @@
         <span class="font-semibold text-green-600">+ $75</span>
       </div>
 
-      <!-- Exit -->
+      <!-- Sortie -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="p-2 rounded-xl bg-red-100 text-red-600">
+          <div class="p-3 rounded-2xl bg-red-100 text-red-600">
             <i data-feather="arrow-up-right"></i>
           </div>
           <div>
@@ -145,7 +149,7 @@
 
 </main>
 
-<!-- Load sidebar -->
+<!-- Load Sidebar -->
 <script>
   fetch("../partials/sidebar.html")
     .then(r => r.text())
@@ -160,15 +164,14 @@
 <script>
   feather.replace();
 
-  // Line chart
   new Chart(document.getElementById("balanceChart"), {
     type: "line",
     data: {
       labels: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin"],
       datasets: [{
         data: [1800, 1950, 2100, 2050, 2300, 2450],
-        borderColor: "#6366f1",
-        backgroundColor: "rgba(99,102,241,0.15)",
+        borderColor: "#6d2cf3",
+        backgroundColor: "rgba(109,44,243,0.18)",
         tension: 0.45,
         fill: true
       }]
@@ -176,21 +179,6 @@
     options: {
       plugins: { legend: { display: false } },
       scales: { x: { display: false }, y: { display: false } }
-    }
-  });
-
-  // Doughnut chart
-  new Chart(document.getElementById("flowChart"), {
-    type: "doughnut",
-    data: {
-      labels: ["Entrées", "Sorties"],
-      datasets: [{
-        data: [68, 32],
-        backgroundColor: ["#22c55e", "#ef4444"]
-      }]
-    },
-    options: {
-      plugins: { legend: { position: "bottom" } }
     }
   });
 </script>
