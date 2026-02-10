@@ -33,38 +33,59 @@
     </h1>
 
     <span class="text-xs text-slate-400">
-      Centre de flux
+      Flux
     </span>
   </header>
 
   <!-- Actions rapides -->
   <section class="grid grid-cols-3 gap-3 mb-6">
 
+    <!-- Envoyer -->
     <button
       class="bg-gradient-to-br from-[#6d2cf3] to-[#4b1bb3]
-             text-white rounded-2xl p-4
-             shadow active:scale-95 transition">
-      <p class="text-xl">➤</p>
-      <p class="text-xs mt-1">Envoyer</p>
+             text-white rounded-2xl p-4 shadow
+             active:scale-95 transition">
+      <svg class="w-6 h-6 mx-auto mb-1" fill="none" stroke="currentColor" stroke-width="1.8"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M22 2L11 13" />
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M22 2l-7 20-4-9-9-4 20-7z" />
+      </svg>
+      <p class="text-xs">Envoyer</p>
     </button>
 
+    <!-- Demander -->
     <button
       class="bg-white rounded-2xl p-4 shadow
              active:scale-95 transition">
-      <p class="text-xl">⬇</p>
-      <p class="text-xs mt-1">Demander</p>
+      <svg class="w-6 h-6 mx-auto mb-1 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M12 5v14" />
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M19 12l-7 7-7-7" />
+      </svg>
+      <p class="text-xs">Demander</p>
     </button>
 
+    <!-- Recharger -->
     <button
       class="bg-white rounded-2xl p-4 shadow
              active:scale-95 transition">
-      <p class="text-xl">＋</p>
-      <p class="text-xs mt-1">Recharger</p>
+      <svg class="w-6 h-6 mx-auto mb-1 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M12 4v16" />
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4 12h16" />
+      </svg>
+      <p class="text-xs">Recharger</p>
     </button>
 
   </section>
 
-  <!-- Résumé des flux -->
+  <!-- Résumé -->
   <section class="bg-white rounded-3xl p-5 shadow mb-6">
     <h3 class="font-semibold mb-4">
       Résumé des flux
@@ -84,6 +105,7 @@
 
   <!-- Historique -->
   <section class="bg-white rounded-3xl p-5 shadow">
+
     <div class="flex items-center justify-between mb-4">
       <h3 class="font-semibold">
         Historique
@@ -93,137 +115,60 @@
       </span>
     </div>
 
-    <!-- Scroll -->
     <div class="space-y-4 max-h-80 overflow-y-auto pr-1">
 
       <!-- Entrée -->
-      <div
-        class="flex items-center justify-between
-               p-3 rounded-2xl
-               hover:bg-slate-50 transition">
-
+      <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50 transition">
         <div class="flex items-center gap-3">
-          <div
-            class="w-11 h-11 rounded-full
-                   bg-gradient-to-br from-green-400 to-emerald-500
-                   text-white font-bold flex items-center justify-center">
-            JK
+          <div class="w-11 h-11 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 19V5" />
+              <path stroke-linecap="round" d="M5 12l7-7 7 7" />
+            </svg>
           </div>
           <div>
             <p class="font-medium">Junior Kalala</p>
-            <p class="text-xs text-slate-400">
-              Entrée • USD
-            </p>
+            <p class="text-xs text-slate-400">Entrée • USD</p>
           </div>
         </div>
-
-        <div class="text-right">
-          <p class="font-semibold text-green-600">+ $120</p>
-          <span
-            class="inline-block mt-1
-                   px-2 py-0.5 rounded-full
-                   bg-green-100 text-green-600 text-xs">
-            Reçu
-          </span>
-        </div>
+        <span class="font-semibold text-green-600">+ $120</span>
       </div>
 
       <!-- Sortie -->
-      <div
-        class="flex items-center justify-between
-               p-3 rounded-2xl
-               hover:bg-slate-50 transition">
-
+      <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50 transition">
         <div class="flex items-center gap-3">
-          <div
-            class="w-11 h-11 rounded-full
-                   bg-gradient-to-br from-red-400 to-rose-500
-                   text-white font-bold flex items-center justify-center">
-            GM
+          <div class="w-11 h-11 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 5v14" />
+              <path stroke-linecap="round" d="M19 12l-7 7-7-7" />
+            </svg>
           </div>
           <div>
             <p class="font-medium">Grâce Mukendi</p>
-            <p class="text-xs text-slate-400">
-              Sortie • CDF
-            </p>
+            <p class="text-xs text-slate-400">Sortie • CDF</p>
           </div>
         </div>
-
-        <div class="text-right">
-          <p class="font-semibold text-red-600">- 150 000</p>
-          <span
-            class="inline-block mt-1
-                   px-2 py-0.5 rounded-full
-                   bg-red-100 text-red-600 text-xs">
-            Envoyé
-          </span>
-        </div>
+        <span class="font-semibold text-red-600">- 150 000</span>
       </div>
 
-      <!-- Demande reçue -->
-      <div
-        class="flex items-center justify-between
-               p-3 rounded-2xl
-               bg-yellow-50">
-
+      <!-- Demande -->
+      <div class="flex items-center justify-between p-3 rounded-2xl bg-yellow-50">
         <div class="flex items-center gap-3">
-          <div
-            class="w-11 h-11 rounded-full
-                   bg-gradient-to-br from-yellow-400 to-amber-500
-                   text-white font-bold flex items-center justify-center">
-            PM
+          <div class="w-11 h-11 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 8v8" />
+              <path stroke-linecap="round" d="M8 12h8" />
+            </svg>
           </div>
           <div>
             <p class="font-medium">Patrick Mwamba</p>
-            <p class="text-xs text-slate-400">
-              Demande reçue • USD
-            </p>
+            <p class="text-xs text-slate-400">Demande reçue • USD</p>
           </div>
         </div>
-
-        <div class="text-right">
-          <p class="font-semibold">$ 60</p>
-          <div class="flex gap-2 mt-1">
-            <button class="px-2 py-0.5 text-xs rounded-full bg-green-100 text-green-600">
-              Accepter
-            </button>
-            <button class="px-2 py-0.5 text-xs rounded-full bg-red-100 text-red-600">
-              Refuser
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Recharge -->
-      <div
-        class="flex items-center justify-between
-               p-3 rounded-2xl
-               hover:bg-slate-50 transition">
-
-        <div class="flex items-center gap-3">
-          <div
-            class="w-11 h-11 rounded-full
-                   bg-gradient-to-br from-indigo-400 to-violet-500
-                   text-white font-bold flex items-center justify-center">
-            TL
-          </div>
-          <div>
-            <p class="font-medium">Recharge</p>
-            <p class="text-xs text-slate-400">
-              Manuel • USD
-            </p>
-          </div>
-        </div>
-
-        <div class="text-right">
-          <p class="font-semibold text-indigo-600">+ $300</p>
-          <span
-            class="inline-block mt-1
-                   px-2 py-0.5 rounded-full
-                   bg-indigo-100 text-indigo-600 text-xs">
-            Confirmée
-          </span>
-        </div>
+        <span class="font-semibold">$ 60</span>
       </div>
 
     </div>
