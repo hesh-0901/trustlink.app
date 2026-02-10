@@ -8,16 +8,13 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <!-- Sidebar CSS -->
   <link rel="stylesheet" href="../css/sidebar.css">
 </head>
 
 <body class="bg-[#f5f3ff] text-slate-800">
 
-<!-- Sidebar -->
+<!-- Sidebar container -->
 <div id="sidebar-container"></div>
 
 <!-- Main -->
@@ -25,143 +22,41 @@
 
   <!-- Header -->
   <header class="flex items-center justify-between mb-6">
-    <button onclick="openSidebar()"
-      class="p-3 rounded-2xl bg-white shadow active:scale-95 transition">
+    <button
+      onclick="openSidebar()"
+      class="p-3 rounded-2xl bg-white shadow">
       ☰
     </button>
 
     <h1 class="text-lg font-semibold">Dashboard</h1>
 
-    <!-- Notifications -->
-    <button
-      class="relative p-3 rounded-2xl bg-[#6d2cf3] text-white shadow active:scale-95 transition">
+    <button class="p-3 rounded-2xl bg-[#6d2cf3] text-white shadow">
       🔔
-      <span
-        class="absolute -top-1 -right-1
-               w-5 h-5 rounded-full
-               bg-yellow-400 text-[#4b1bb3]
-               text-xs font-bold flex items-center justify-center">
-        3
-      </span>
     </button>
   </header>
 
-  <!-- Wallet -->
+  <!-- Content -->
   <section
     class="bg-gradient-to-br from-[#6d2cf3] to-[#4b1bb3]
-           rounded-3xl p-6 text-white shadow-xl mb-6">
-
+           rounded-3xl p-6 text-white shadow-xl">
     <p class="text-sm opacity-80">Solde total</p>
     <h2 class="text-4xl font-bold mt-2">$ 2,450.00</h2>
     <p class="text-sm opacity-80 mt-1">≈ 6 615 000 CDF</p>
-
-    <div class="mt-5 flex gap-3">
-      <div class="flex-1 bg-white/15 rounded-2xl p-3 text-center">
-        <p class="text-xs opacity-80">Entrées</p>
-        <p class="font-semibold mt-1">+ $820</p>
-      </div>
-      <div class="flex-1 bg-white/15 rounded-2xl p-3 text-center">
-        <p class="text-xs opacity-80">Sorties</p>
-        <p class="font-semibold mt-1">- $410</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chart -->
-  <section class="bg-white rounded-3xl p-5 shadow mb-6">
-    <h3 class="font-semibold mb-4">Évolution du solde</h3>
-    <canvas id="balanceChart" height="120"></canvas>
-  </section>
-
-  <!-- Transactions -->
-  <section class="bg-white rounded-3xl p-5 shadow">
-    <h3 class="font-semibold mb-4">Transactions récentes</h3>
-
-    <div class="space-y-4 max-h-72 overflow-y-auto pr-1">
-
-      <!-- Item -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div
-            class="w-11 h-11 rounded-full bg-green-500
-                   text-white font-bold flex items-center justify-center">
-            JK
-          </div>
-          <div>
-            <p class="font-medium">Junior Kalala</p>
-            <p class="text-xs text-slate-400">Entrée • USD</p>
-          </div>
-        </div>
-        <span class="font-semibold text-green-600">+ $120</span>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div
-            class="w-11 h-11 rounded-full bg-red-500
-                   text-white font-bold flex items-center justify-center">
-            GM
-          </div>
-          <div>
-            <p class="font-medium">Grâce Mukendi</p>
-            <p class="text-xs text-slate-400">Sortie • CDF</p>
-          </div>
-        </div>
-        <span class="font-semibold text-red-600">- 150 000</span>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div
-            class="w-11 h-11 rounded-full bg-indigo-500
-                   text-white font-bold flex items-center justify-center">
-            MT
-          </div>
-          <div>
-            <p class="font-medium">Moïse Tshibanda</p>
-            <p class="text-xs text-slate-400">Entrée • USD</p>
-          </div>
-        </div>
-        <span class="font-semibold text-green-600">+ $75</span>
-      </div>
-
-    </div>
   </section>
 
 </main>
 
-<!-- Load Sidebar FIRST -->
+<!-- Charger la sidebar -->
 <script>
   fetch("../partials/sidebar.html")
-    .then(r => r.text())
+    .then(response => response.text())
     .then(html => {
       document.getElementById("sidebar-container").innerHTML = html;
     });
 </script>
 
-<!-- Sidebar JS -->
+<!-- Sidebar JS (APRÈS le fetch) -->
 <script src="../js/sidebar.js"></script>
-
-<!-- Chart JS -->
-<script>
-  new Chart(document.getElementById("balanceChart"), {
-    type: "line",
-    data: {
-      labels: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin"],
-      datasets: [{
-        data: [1800, 1950, 2100, 2050, 2300, 2450],
-        borderColor: "#6d2cf3",
-        backgroundColor: "rgba(109,44,243,0.2)",
-        tension: 0.4,
-        fill: true
-      }]
-    },
-    options: {
-      plugins: { legend: { display: false } },
-      scales: { x: { display: false }, y: { display: false } }
-    }
-  });
-</script>
 
 </body>
 </html>
