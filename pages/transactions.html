@@ -8,6 +8,9 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <!-- Sidebar CSS -->
   <link rel="stylesheet" href="../css/sidebar.css">
 </head>
@@ -21,154 +24,117 @@
 <main class="max-w-md mx-auto px-4 pt-4 pb-32">
 
   <!-- Header -->
-  <header class="flex items-center justify-between mb-6">
-    <button
-      onclick="openSidebar()"
-      class="p-3 rounded-2xl bg-white shadow active:scale-95 transition">
+  <header class="flex items-center justify-between mb-5">
+    <button onclick="openSidebar()" class="p-3 rounded-2xl bg-white shadow active:scale-95 transition">
       ☰
     </button>
-
-    <h1 class="text-lg font-semibold tracking-tight">
-      Transactions
-    </h1>
-
-    <span class="text-xs text-slate-400">
-      Flux
-    </span>
+    <h1 class="text-lg font-semibold">Transactions</h1>
+    <span class="text-xs text-slate-400">Flux</span>
   </header>
 
   <!-- Actions rapides -->
-  <section class="grid grid-cols-3 gap-3 mb-6">
-
-    <!-- Envoyer -->
-    <button
-      class="bg-gradient-to-br from-[#6d2cf3] to-[#4b1bb3]
-             text-white rounded-2xl p-4 shadow
-             active:scale-95 transition">
-      <svg class="w-6 h-6 mx-auto mb-1" fill="none" stroke="currentColor" stroke-width="1.8"
-        viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M22 2L11 13" />
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M22 2l-7 20-4-9-9-4 20-7z" />
+  <section class="grid grid-cols-3 gap-3 mb-5">
+    <button class="bg-gradient-to-br from-[#6d2cf3] to-[#4b1bb3] text-white rounded-2xl p-4 shadow active:scale-95">
+      <svg class="w-6 h-6 mx-auto mb-1" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <path stroke-linecap="round" d="M22 2L11 13" />
+        <path stroke-linecap="round" d="M22 2l-7 20-4-9-9-4 20-7z" />
       </svg>
       <p class="text-xs">Envoyer</p>
     </button>
 
-    <!-- Demander -->
-    <button
-      class="bg-white rounded-2xl p-4 shadow
-             active:scale-95 transition">
-      <svg class="w-6 h-6 mx-auto mb-1 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
-        viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M12 5v14" />
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M19 12l-7 7-7-7" />
+    <button class="bg-white rounded-2xl p-4 shadow active:scale-95">
+      <svg class="w-6 h-6 mx-auto mb-1 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <path stroke-linecap="round" d="M12 5v14" />
+        <path stroke-linecap="round" d="M19 12l-7 7-7-7" />
       </svg>
       <p class="text-xs">Demander</p>
     </button>
 
-    <!-- Recharger -->
-    <button
-      class="bg-white rounded-2xl p-4 shadow
-             active:scale-95 transition">
-      <svg class="w-6 h-6 mx-auto mb-1 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
-        viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M12 4v16" />
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M4 12h16" />
+    <button class="bg-white rounded-2xl p-4 shadow active:scale-95">
+      <svg class="w-6 h-6 mx-auto mb-1 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <path stroke-linecap="round" d="M12 4v16" />
+        <path stroke-linecap="round" d="M4 12h16" />
       </svg>
       <p class="text-xs">Recharger</p>
     </button>
-
   </section>
 
-  <!-- Résumé -->
-  <section class="bg-white rounded-3xl p-5 shadow mb-6">
-    <h3 class="font-semibold mb-4">
-      Résumé des flux
-    </h3>
+  <!-- Filtres visuels -->
+  <section class="flex gap-2 mb-5 overflow-x-auto">
+    <span class="px-4 py-1.5 rounded-full bg-[#6d2cf3] text-white text-xs">Aujourd’hui</span>
+    <span class="px-4 py-1.5 rounded-full bg-white shadow text-xs">7 jours</span>
+    <span class="px-4 py-1.5 rounded-full bg-white shadow text-xs">30 jours</span>
+    <span class="px-4 py-1.5 rounded-full bg-white shadow text-xs">Entrées</span>
+    <span class="px-4 py-1.5 rounded-full bg-white shadow text-xs">Sorties</span>
+  </section>
 
-    <div class="grid grid-cols-2 gap-4 text-center">
-      <div>
-        <p class="text-xs text-slate-400">Entrées</p>
-        <p class="text-lg font-bold text-green-600">+ $820</p>
-      </div>
-      <div>
-        <p class="text-xs text-slate-400">Sorties</p>
-        <p class="text-lg font-bold text-red-600">- $410</p>
-      </div>
-    </div>
+  <!-- Mini graphique -->
+  <section class="bg-white rounded-3xl p-5 shadow mb-6">
+    <h3 class="font-semibold mb-3">Activité récente</h3>
+    <canvas id="flowChart" height="120"></canvas>
   </section>
 
   <!-- Historique -->
   <section class="bg-white rounded-3xl p-5 shadow">
-
-    <div class="flex items-center justify-between mb-4">
-      <h3 class="font-semibold">
-        Historique
-      </h3>
-      <span class="text-xs text-slate-400">
-        Aujourd’hui
-      </span>
-    </div>
+    <h3 class="font-semibold mb-4">Historique</h3>
 
     <div class="space-y-4 max-h-80 overflow-y-auto pr-1">
 
-      <!-- Entrée -->
-      <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50 transition">
+      <!-- Confirmée -->
+      <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50">
         <div class="flex items-center gap-3">
           <div class="w-11 h-11 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" d="M12 19V5" />
-              <path stroke-linecap="round" d="M5 12l7-7 7 7" />
-            </svg>
+            ↑
           </div>
           <div>
             <p class="font-medium">Junior Kalala</p>
             <p class="text-xs text-slate-400">Entrée • USD</p>
           </div>
         </div>
-        <span class="font-semibold text-green-600">+ $120</span>
-      </div>
-
-      <!-- Sortie -->
-      <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-slate-50 transition">
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" d="M12 5v14" />
-              <path stroke-linecap="round" d="M19 12l-7 7-7-7" />
-            </svg>
-          </div>
-          <div>
-            <p class="font-medium">Grâce Mukendi</p>
-            <p class="text-xs text-slate-400">Sortie • CDF</p>
-          </div>
+        <div class="text-right">
+          <p class="font-semibold text-green-600">+ $120</p>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-600">
+            Confirmée
+          </span>
         </div>
-        <span class="font-semibold text-red-600">- 150 000</span>
       </div>
 
-      <!-- Demande -->
+      <!-- En cours -->
       <div class="flex items-center justify-between p-3 rounded-2xl bg-yellow-50">
         <div class="flex items-center gap-3">
           <div class="w-11 h-11 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" d="M12 8v8" />
-              <path stroke-linecap="round" d="M8 12h8" />
-            </svg>
+            ⏳
           </div>
           <div>
             <p class="font-medium">Patrick Mwamba</p>
-            <p class="text-xs text-slate-400">Demande reçue • USD</p>
+            <p class="text-xs text-slate-400">Demande • USD</p>
           </div>
         </div>
-        <span class="font-semibold">$ 60</span>
+        <div class="text-right">
+          <p class="font-semibold">$ 60</p>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700">
+            En cours
+          </span>
+        </div>
+      </div>
+
+      <!-- Échouée -->
+      <div class="flex items-center justify-between p-3 rounded-2xl bg-red-50">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
+            ✕
+          </div>
+          <div>
+            <p class="font-medium">Recharge</p>
+            <p class="text-xs text-slate-400">Manuelle • USD</p>
+          </div>
+        </div>
+        <div class="text-right">
+          <p class="font-semibold text-red-600">+ $300</p>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-600">
+            Échouée
+          </span>
+        </div>
       </div>
 
     </div>
@@ -176,7 +142,7 @@
 
 </main>
 
-<!-- Charger la sidebar -->
+<!-- Sidebar -->
 <script>
   fetch("../partials/sidebar.html")
     .then(r => r.text())
@@ -185,8 +151,30 @@
     });
 </script>
 
-<!-- Sidebar JS -->
 <script src="../js/sidebar.js"></script>
+
+<!-- Chart -->
+<script>
+  new Chart(document.getElementById("flowChart"), {
+    type: "line",
+    data: {
+      labels: ["L", "M", "M", "J", "V", "S", "D"],
+      datasets: [
+        {
+          data: [120, 80, 200, 150, 300, 220, 180],
+          borderColor: "#6d2cf3",
+          backgroundColor: "rgba(109,44,243,0.2)",
+          tension: 0.4,
+          fill: true
+        }
+      ]
+    },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: { x: { display: false }, y: { display: false } }
+    }
+  });
+</script>
 
 </body>
 </html>
