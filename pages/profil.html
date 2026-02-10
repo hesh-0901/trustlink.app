@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trustlink – Profil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Sidebar CSS -->
+  <link rel="stylesheet" href="../css/sidebar.css">
+</head>
+
+<body class="bg-[#f5f3ff] text-slate-800">
+
+<!-- Sidebar -->
+<div id="sidebar-container"></div>
+
+<!-- Main -->
+<main class="max-w-md mx-auto px-4 pt-4 pb-32">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between mb-6">
+    <button onclick="openSidebar()"
+      class="p-3 rounded-xl bg-white shadow-sm active:scale-95 transition">
+      <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" stroke-width="1.8"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <h1 class="text-lg font-semibold tracking-tight">
+      Profil
+    </h1>
+
+    <span class="text-xs text-slate-400">
+      Compte
+    </span>
+  </header>
+
+  <!-- Carte profil -->
+  <section class="bg-white rounded-3xl p-6 shadow-sm mb-6">
+    <div class="flex items-center gap-4">
+
+      <!-- Avatar -->
+      <div
+        class="w-16 h-16 rounded-full
+               bg-gradient-to-br from-[#6d2cf3] to-[#4b1bb3]
+               text-white text-xl font-semibold
+               flex items-center justify-center">
+        JM
+      </div>
+
+      <!-- Infos -->
+      <div class="flex-1">
+        <p class="text-lg font-semibold leading-tight">
+          Jonathan Mbuyi
+        </p>
+        <p class="text-sm text-slate-400">
+          jonathan.mbuyi@email.com
+        </p>
+
+        <span
+          class="inline-block mt-2
+                 text-xs px-2 py-0.5 rounded-full
+                 bg-green-100 text-green-600">
+          Compte vérifié
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Informations personnelles -->
+  <section class="bg-white rounded-3xl p-5 shadow-sm mb-6">
+    <h3 class="font-semibold mb-4">
+      Informations personnelles
+    </h3>
+
+    <div class="space-y-3 text-sm">
+
+      <div class="flex items-center justify-between">
+        <span class="text-slate-400">Nom complet</span>
+        <span class="font-medium">Jonathan Mbuyi</span>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <span class="text-slate-400">Téléphone</span>
+        <span class="font-medium">+243 97 000 0000</span>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <span class="text-slate-400">Pays</span>
+        <span class="font-medium">RDC</span>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <span class="text-slate-400">Devise principale</span>
+        <span class="font-medium">USD</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Collaborateurs -->
+  <section class="bg-white rounded-3xl p-5 shadow-sm mb-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-semibold">
+        Collaborateurs
+      </h3>
+      <span class="text-xs text-slate-400">
+        Contacts fiables
+      </span>
+    </div>
+
+    <div class="space-y-3">
+
+      <div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-600
+                      flex items-center justify-center font-medium">
+            JK
+          </div>
+          <div>
+            <p class="font-medium text-sm">Junior Kalala</p>
+            <p class="text-xs text-slate-400">Collaborateur</p>
+          </div>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-600">
+          Actif
+        </span>
+      </div>
+
+      <div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-600
+                      flex items-center justify-center font-medium">
+            GM
+          </div>
+          <div>
+            <p class="font-medium text-sm">Grâce Mukendi</p>
+            <p class="text-xs text-slate-400">Collaborateur</p>
+          </div>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-600">
+          Actif
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Actions -->
+  <section class="space-y-3">
+
+    <button
+      class="w-full py-3 rounded-2xl
+             bg-white shadow-sm
+             text-sm font-medium
+             active:scale-95 transition">
+      Modifier le profil
+    </button>
+
+    <button
+      class="w-full py-3 rounded-2xl
+             bg-red-50 text-red-600
+             text-sm font-medium
+             active:scale-95 transition">
+      Déconnexion
+    </button>
+
+  </section>
+
+</main>
+
+<!-- Sidebar -->
+<script>
+  fetch("../partials/sidebar.html")
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById("sidebar-container").innerHTML = html;
+    });
+</script>
+
+<script src="../js/sidebar.js"></script>
+
+</body>
+</html>
