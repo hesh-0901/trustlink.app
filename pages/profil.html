@@ -26,7 +26,7 @@
     </button>
 
     <h1 class="text-lg font-semibold">Profil</h1>
-    <span class="text-xs text-slate-400">Réseau</span>
+    <span class="text-xs text-slate-400">Compte</span>
   </header>
 
   <!-- Carte utilisateur -->
@@ -40,11 +40,70 @@
       <div class="flex-1">
         <p class="text-lg font-semibold">Jonathan Mbuyi</p>
         <p class="text-sm text-slate-400">jonathan.mbuyi@email.com</p>
-        <span class="inline-block mt-2 text-xs px-2 py-0.5 rounded-full
+        <span class="inline-flex items-center gap-1 mt-2 text-xs px-2 py-0.5 rounded-full
                      bg-green-100 text-green-600">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M5 13l4 4L19 7"/>
+          </svg>
           Compte vérifié
         </span>
       </div>
+    </div>
+  </section>
+
+  <!-- Informations personnelles -->
+  <section class="bg-white rounded-3xl p-5 shadow-sm mb-6">
+    <h3 class="font-semibold mb-4">Informations personnelles</h3>
+
+    <div class="space-y-4 text-sm">
+
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2 text-slate-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M5.121 17.804A9 9 0 1118.88 6.196"/>
+          </svg>
+          Nom complet
+        </div>
+        <span class="font-medium">Jonathan Mbuyi</span>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2 text-slate-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0z"/>
+            <path stroke-linecap="round" d="M12 14v7"/>
+          </svg>
+          Téléphone
+        </div>
+        <span class="font-medium">+243 97 000 0000</span>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2 text-slate-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M12 21s7-4.35 7-10a7 7 0 10-14 0c0 5.65 7 10 7 10z"/>
+          </svg>
+          Pays
+        </div>
+        <span class="font-medium">RDC</span>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2 text-slate-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M12 8c-4.418 0-8 1.79-8 4s3.582 4 8 4 8-1.79 8-4-3.582-4-8-4z"/>
+            <path stroke-linecap="round" d="M12 12v8"/>
+          </svg>
+          Devise principale
+        </div>
+        <span class="font-medium">USD</span>
+      </div>
+
     </div>
   </section>
 
@@ -59,7 +118,6 @@
              focus:ring-2 focus:ring-[#6d2cf3] outline-none text-sm"
     />
 
-    <!-- Résultat fictif -->
     <div class="mt-4 flex items-center justify-between p-3 rounded-xl bg-slate-50">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-600
@@ -71,24 +129,27 @@
           <p class="text-xs text-slate-400">Utilisateur Trustlink</p>
         </div>
       </div>
-      <button
-        class="text-xs px-3 py-1 rounded-full
-               bg-[#6d2cf3] text-white">
+      <button class="text-xs px-3 py-1 rounded-full bg-[#6d2cf3] text-white">
         Envoyer une demande
       </button>
     </div>
   </section>
 
-  <!-- GESTION DES RELATIONS (ACCORDÉONS) -->
+  <!-- Gestion des relations -->
   <section class="space-y-4">
 
     <!-- Demandes reçues -->
     <details class="bg-white rounded-3xl shadow-sm">
       <summary class="cursor-pointer list-none p-5 flex items-center justify-between">
-        <span class="font-semibold">Demandes reçues</span>
-        <span class="text-xs px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700">
-          1
+        <span class="font-semibold flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" stroke-width="1.8"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M12 5v14"/>
+            <path stroke-linecap="round" d="M19 12l-7 7-7-7"/>
+          </svg>
+          Demandes reçues
         </span>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700">1</span>
       </summary>
 
       <div class="px-5 pb-5 space-y-3">
@@ -119,13 +180,18 @@
     <!-- Demandes envoyées -->
     <details class="bg-white rounded-3xl shadow-sm">
       <summary class="cursor-pointer list-none p-5 flex items-center justify-between">
-        <span class="font-semibold">Demandes envoyées</span>
-        <span class="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
-          1
+        <span class="font-semibold flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" stroke-width="1.8"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M12 19V5"/>
+            <path stroke-linecap="round" d="M5 12l7-7 7 7"/>
+          </svg>
+          Demandes envoyées
         </span>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">1</span>
       </summary>
 
-      <div class="px-5 pb-5 space-y-3">
+      <div class="px-5 pb-5">
         <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-600
@@ -134,7 +200,7 @@
             </div>
             <div>
               <p class="font-medium text-sm">Grâce Mukendi</p>
-              <p class="text-xs text-slate-400">En attente de réponse</p>
+              <p class="text-xs text-slate-400">En attente</p>
             </div>
           </div>
 
@@ -148,13 +214,18 @@
     <!-- Collaborateurs -->
     <details class="bg-white rounded-3xl shadow-sm" open>
       <summary class="cursor-pointer list-none p-5 flex items-center justify-between">
-        <span class="font-semibold">Collaborateurs</span>
-        <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-600">
-          1
+        <span class="font-semibold flex items-center gap-2">
+          <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" stroke-width="1.8"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M17 20h5v-2a4 4 0 00-5-4M9 20H4v-2a4 4 0 015-4"/>
+            <path stroke-linecap="round" d="M12 12a4 4 0 100-8 4 4 0 000 8z"/>
+          </svg>
+          Collaborateurs
         </span>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-600">1</span>
       </summary>
 
-      <div class="px-5 pb-5 space-y-3">
+      <div class="px-5 pb-5">
         <div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-full bg-green-100 text-green-600
