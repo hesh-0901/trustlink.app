@@ -1,0 +1,31 @@
+.sidebar {
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 40;
+}
+
+.menu-item {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 500;
+}
+
+.menu-item:hover {
+  background-color: #eef2ff;
+  color: #4f46e5;
+}
+
+.menu-item.active {
+  background-color: #eef2ff;
+  color: #4f46e5;
+}
