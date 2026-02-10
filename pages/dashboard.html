@@ -8,23 +8,16 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
+  <!-- Heroicons (modern icons) -->
+  <script type="module">
+    import { createElement } from "https://cdn.skypack.dev/@heroicons/react/24/outline";
+  </script>
 
-  <!-- Charts -->
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- Sidebar CSS -->
   <link rel="stylesheet" href="../css/sidebar.css">
-
-  <style>
-    /* Palette Pi Network (violet / or) */
-    :root {
-      --pi-purple: #6d2cf3;
-      --pi-purple-dark: #4b1bb3;
-      --pi-gold: #f5c46b;
-    }
-  </style>
 </head>
 
 <body class="bg-[#f5f3ff] text-slate-800">
@@ -33,66 +26,81 @@
 <div id="sidebar-container"></div>
 
 <!-- Main -->
-<main class="max-w-md mx-auto px-4 pb-28 pt-4">
+<main class="max-w-md mx-auto px-4 pt-4 pb-28">
 
   <!-- Header -->
   <header class="flex items-center justify-between mb-6">
-    <button onclick="openSidebar()" class="p-3 rounded-2xl bg-white shadow">
-      <i data-feather="menu"></i>
+    <button onclick="openSidebar()"
+      class="p-3 rounded-2xl bg-white shadow">
+      <!-- menu icon -->
+      <svg class="w-6 h-6 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
     </button>
 
-    <h1 class="text-lg font-semibold">Dashboard</h1>
+    <h1 class="font-semibold text-lg">Dashboard</h1>
 
     <button
-      class="p-3 rounded-2xl bg-[var(--pi-purple)] text-white shadow-lg">
-      <i data-feather="bell"></i>
+      class="p-3 rounded-2xl bg-[#6d2cf3] text-white shadow-lg">
+      <!-- bell -->
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round"
+          d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5"/>
+        <path stroke-linecap="round" d="M9 17a3 3 0 006 0"/>
+      </svg>
     </button>
   </header>
 
   <!-- Wallet Card -->
   <section
-    class="rounded-3xl p-6 mb-6 shadow-xl text-white
-           bg-gradient-to-br from-[var(--pi-purple)]
-           to-[var(--pi-purple-dark)]">
+    class="bg-gradient-to-br from-[#6d2cf3] to-[#4b1bb3]
+           rounded-3xl p-6 text-white shadow-xl mb-6">
 
-    <div class="flex items-center justify-between">
-      <p class="text-sm opacity-90">Solde total</p>
-      <i data-feather="credit-card" class="opacity-80"></i>
-    </div>
+    <p class="text-sm opacity-80">Solde total</p>
+    <h2 class="text-4xl font-bold mt-2">$ 2,450.00</h2>
+    <p class="text-sm opacity-80 mt-1">≈ 6 615 000 CDF</p>
 
-    <h2 class="text-4xl font-bold mt-3">$ 2,450.00</h2>
-    <p class="text-sm mt-1 opacity-90">≈ 6 615 000 CDF</p>
-
-    <div class="mt-5 flex gap-3">
+    <div class="mt-4 flex gap-3">
       <span class="px-4 py-1 rounded-full bg-white/20 text-sm">USD</span>
       <span class="px-4 py-1 rounded-full bg-white/20 text-sm">CDF</span>
     </div>
   </section>
 
-  <!-- Chart -->
+  <!-- Chart Card -->
   <section class="bg-white rounded-3xl p-5 shadow mb-6">
     <div class="flex items-center justify-between mb-4">
-      <h3 class="font-semibold">Évolution du portefeuille</h3>
-      <i data-feather="trending-up" class="text-[var(--pi-purple)]"></i>
+      <h3 class="font-semibold">Évolution du solde</h3>
+      <svg class="w-5 h-5 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" d="M3 17l6-6 4 4 7-7"/>
+      </svg>
     </div>
-    <canvas id="balanceChart" height="130"></canvas>
+    <canvas id="balanceChart" height="120"></canvas>
   </section>
 
-  <!-- Recent Transactions -->
+  <!-- Transactions Card -->
   <section class="bg-white rounded-3xl p-5 shadow">
     <div class="flex items-center justify-between mb-4">
       <h3 class="font-semibold">Transactions récentes</h3>
-      <i data-feather="activity" class="text-[var(--pi-purple)]"></i>
+      <svg class="w-5 h-5 text-[#6d2cf3]" fill="none" stroke="currentColor" stroke-width="1.8"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" d="M4 4v5h.6M20 20v-5h-.6"/>
+      </svg>
     </div>
 
-    <!-- Scrollable Card -->
-    <div class="space-y-4 max-h-64 overflow-y-auto pr-1">
+    <!-- Scrollable list -->
+    <div class="space-y-4 max-h-72 overflow-y-auto pr-1">
 
       <!-- Entrée -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="p-3 rounded-2xl bg-green-100 text-green-600">
-            <i data-feather="arrow-down-left"></i>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 19V5m0 0l-4 4m4-4l4 4"/>
+            </svg>
           </div>
           <div>
             <p class="font-medium">Junior Kalala</p>
@@ -106,7 +114,10 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="p-3 rounded-2xl bg-red-100 text-red-600">
-            <i data-feather="arrow-up-right"></i>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 5v14m0 0l-4-4m4 4l4-4"/>
+            </svg>
           </div>
           <div>
             <p class="font-medium">Grâce Mukendi</p>
@@ -120,7 +131,10 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="p-3 rounded-2xl bg-green-100 text-green-600">
-            <i data-feather="arrow-down-left"></i>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M12 19V5m0 0l-4 4m4-4l4 4"/>
+            </svg>
           </div>
           <div>
             <p class="font-medium">Moïse Tshibanda</p>
@@ -130,40 +144,24 @@
         <span class="font-semibold text-green-600">+ $75</span>
       </div>
 
-      <!-- Sortie -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-3 rounded-2xl bg-red-100 text-red-600">
-            <i data-feather="arrow-up-right"></i>
-          </div>
-          <div>
-            <p class="font-medium">Patrick Mwamba</p>
-            <p class="text-xs text-slate-400">Sortie</p>
-          </div>
-        </div>
-        <span class="font-semibold text-red-600">- $50</span>
-      </div>
-
     </div>
   </section>
 
 </main>
 
-<!-- Load Sidebar -->
+<!-- Load sidebar -->
 <script>
   fetch("../partials/sidebar.html")
     .then(r => r.text())
     .then(html => {
       document.getElementById("sidebar-container").innerHTML = html;
-      feather.replace();
     });
 </script>
 
 <script src="../js/sidebar.js"></script>
 
+<!-- Charts -->
 <script>
-  feather.replace();
-
   new Chart(document.getElementById("balanceChart"), {
     type: "line",
     data: {
@@ -171,7 +169,7 @@
       datasets: [{
         data: [1800, 1950, 2100, 2050, 2300, 2450],
         borderColor: "#6d2cf3",
-        backgroundColor: "rgba(109,44,243,0.18)",
+        backgroundColor: "rgba(109,44,243,0.2)",
         tension: 0.45,
         fill: true
       }]
