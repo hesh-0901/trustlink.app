@@ -1,15 +1,13 @@
-// Balance evolution chart
-const balanceCtx = document.getElementById("balanceChart");
+const ctx = document.getElementById("balanceChart");
 
-new Chart(balanceCtx, {
+new Chart(ctx, {
   type: "line",
   data: {
     labels: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin"],
     datasets: [{
-      label: "Solde USD",
       data: [1800, 2000, 1900, 2200, 2300, 2450],
-      borderColor: "#4f46e5",
-      backgroundColor: "rgba(79, 70, 229, 0.15)",
+      borderColor: "#6d2cf3",
+      backgroundColor: "rgba(109,44,243,0.1)",
       tension: 0.4,
       fill: true
     }]
@@ -18,26 +16,9 @@ new Chart(balanceCtx, {
     plugins: { legend: { display: false } },
     scales: {
       y: { display: false },
-      x: { display: true }
+      x: { grid: { display: false } }
     }
   }
 });
 
-// Transactions distribution chart
-const transactionCtx = document.getElementById("transactionChart");
-
-new Chart(transactionCtx, {
-  type: "doughnut",
-  data: {
-    labels: ["Reçus", "Envoyés"],
-    datasets: [{
-      data: [65, 35],
-      backgroundColor: ["#22c55e", "#ef4444"]
-    }]
-  },
-  options: {
-    plugins: { legend: { position: "bottom" } }
-  }
-});
-
-console.log("Dashboard Trustlink chargé – Congo 2026");
+console.log("Trustlink v2 chargé 🚀");
