@@ -1,6 +1,10 @@
-// Construction dynamique du bon chemin GitHub Pages
-const baseUrl = window.location.origin + "/" + window.location.pathname.split("/")[1];
-const sidebarPath = baseUrl + "/partials/sidebar.html";
+// ===== CONFIGURATION GITHUB PAGES TRUSTLINK =====
+
+// Nom du repo (important pour GitHub Pages)
+const repoName = "trustlink.app";
+
+// Construction du bon chemin absolu
+const sidebarPath = `${window.location.origin}/${repoName}/partials/sidebar.html`;
 
 fetch(sidebarPath)
   .then(response => {
@@ -27,12 +31,14 @@ fetch(sidebarPath)
       return;
     }
 
+    // OUVRIR
     window.openSidebar = function () {
       sidebar.classList.remove("-translate-x-full");
       overlay.classList.remove("hidden");
       document.body.style.overflow = "hidden";
     };
 
+    // FERMER
     window.closeSidebar = function () {
       sidebar.classList.add("-translate-x-full");
       overlay.classList.add("hidden");
@@ -45,7 +51,7 @@ fetch(sidebarPath)
       closeBtn.addEventListener("click", window.closeSidebar);
     }
 
-    console.log("Sidebar chargée correctement sur GitHub ✔️");
+    console.log("Sidebar Trustlink chargée ✔️");
   })
   .catch(error => {
     console.error("Erreur sidebar GitHub :", error);
