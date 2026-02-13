@@ -1,36 +1,24 @@
-// Sidebar elements
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("sidebarOverlay");
-const closeBtn = document.getElementById("closeSidebarBtn");
+fetch("../partials/sidebar.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("sidebar-container").innerHTML = html;
 
-// Ouvrir la sidebar
-window.openSidebar = function () {
-  if (!sidebar || !overlay) return;
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+    const closeBtn = document.getElementById("closeSidebarBtn");
 
-  sidebar.style.transform = "translateX(0)";
-  overlay.classList.remove("hidden");
-  document.body.style.overflow = "hidden"; // bloque le scroll
-};
+    window.openSidebar = function () {
+      sidebar.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    };
 
-// Fermer la sidebar
-window.closeSidebar = function () {
-  if (!sidebar || !overlay) return;
+    function closeSidebar() {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
 
-  sidebar.style.transform = "translateX(-100%)";
-  overlay.classList.add("hidden");
-  document.body.style.overflow = ""; // réactive le scroll
-};
-
-// Clic overlay = fermer
-if (overlay) {
-  overlay.addEventListener("click", () => {
-    closeSidebar();
+    overlay.addEventListener("click", closeSidebar);
+    closeBtn.addEventListener("click", closeSidebar);
   });
-}
-
-// Clic bouton fermer
-if (closeBtn) {
-  closeBtn.addEventListener("click", () => {
-    closeSidebar();
-  });
-}
